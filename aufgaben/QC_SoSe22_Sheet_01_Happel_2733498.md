@@ -8,6 +8,7 @@ lastmod: 2022-04-09
 lang: de_DE
 header-includes: 
   - \usepackage{amsthm}
+  - \usepackage{amssymb}
   - \usepackage{braket}
   - \usepackage{bbm}
 comments: true
@@ -316,7 +317,7 @@ I am unsure what is meant with:
 > any other unitary matrices that describe the same transformation of states?
 Does this mean the same linear transformation?
 
-# 1.3 (Observables)
+# Exercise 1.3 (Observables)
 
 ## a)
 
@@ -652,5 +653,28 @@ $$
 \frac{1}{\sqrt 2}
 \end{aligned}
 $$
+
+# Exercise 1.4 (Turing machines)
+
+We wish to construct a turing machine which is capable of adding eight
+binary numbers modulo two. The result should be written as a ninth
+number on the tape, after which the program halts.
+
+We define the following notation:
+
+| Meaning | Definition |
+|---|---|
+| states | $Q = \{\boldsymbol A, \boldsymbol B, \text{HALT}\}$  |
+| tape alphabet | $\Gamma = \{ \varnothing, 0,1 \}$ |
+| blank symbol | $b = \varnothing$ |
+| input symbols | $\Sigma = \{ 1 \}$ |
+| initial state | $q_0 = \boldsymbol A$ |
+| final states | $\{ \text{HALT} \}$ |
+| transition function | $\begin{aligned} \delta(\boldsymbol A, 0) &= (\boldsymbol A, 0, R) \\ \delta(\boldsymbol B, 0) &= (\boldsymbol B, 0, R) \\ \delta(\boldsymbol A, 1) &= (\boldsymbol B, 1, R) \\ \delta(\boldsymbol B, 1) &= (\boldsymbol A, 1, R) \\ \delta(\boldsymbol A, \varnothing) &= (\text{HALT}, 0, R) \\ \delta(\boldsymbol B, \varnothing) &= (\text{HALT}, 1, R) \end{aligned}$|
+| tape | $\left[ \dots, \varnothing, \underbrace{t_1}_{\text{initial position}}, t_2, t_3, t_4, t_5, t_5, t_6, t_7, t_8, r=\varnothing, \dots \right]$ |
+
+This defines a turing machine and by storing the values for the bits in
+$(t_i)_{i=1,\dots,8}$. After having run the turing machine, until $\text{HALT}$ the result
+will be stored in $r$.
 
 [^notation_linear_operator]: [https://en.wikipedia.org/wiki/Bra%E2%80%93ket_notation#Linear_operators](https://en.wikipedia.org/wiki/Bra%E2%80%93ket_notation#Linear_operators)
